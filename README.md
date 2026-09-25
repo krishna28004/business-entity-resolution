@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ML Challenge 2026 Problem Statement
 
 ## Business Entity Resolution Challenge
@@ -261,3 +262,6 @@ Participants are **STRICTLY NOT ALLOWED** to use external databases, APIs, or se
 - Consider the precision-recall trade-off carefully — F_0.5 rewards precision more than recall
 - Do not neglect singletons — correctly predicting "no match" is worth a full 1.0 on that entity
 - Validate your own output format against the rules above before submitting
+=======
+# business-entity-resolution
+>>>>>>> 226f6599997071f3a02c8ddefee295d3458b0cd4
