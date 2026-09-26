@@ -1,5 +1,0 @@
-# Business Entity Resolution Dependencies
-# Note: Pinned dependencies will be populated upon ML pipeline implementation.
-# numpy>=1.24.0
-# pandas>=2.0.0
-# scikit-learn>=1.2.0
