@@ -49,3 +49,18 @@ export interface PipelineStep {
   outputArtifact?: string;
   status: 'Not Started' | 'In Progress' | 'Completed';
 }
+
+export interface DemoRecord {
+  id: string;
+  source: string;
+  businessName: string;
+  businessAddress: string;
+  country: string;
+}
+
+export interface DemoMatchSignal {
+  feature: string;
+  value: string;
+  signal: 'Strong similarity' | 'Partial similarity' | 'Different' | 'Match';
+}
+

@@ -1,15 +1,21 @@
 import React from 'react';
 import { PageHeader } from '../components/PageHeader';
 import { ValidationCheck } from '../components/ValidationCheck';
+import { SubmissionReadiness } from '../components/SubmissionReadiness';
 import { VALIDATION_RULES } from '../utils/constants';
 import { ShieldCheck, Play, Info } from 'lucide-react';
+import type { PageId } from '../types';
 
-export const ValidationPage: React.FC = () => {
+interface ValidationPageProps {
+  onNavigate?: (page: PageId) => void;
+}
+
+export const ValidationPage: React.FC<ValidationPageProps> = () => {
   return (
-    <div>
+    <div className="space-y-6">
       <PageHeader
         title="Submission Validation"
-        description="Verify generated output files against all 10 PDF challenge integrity rules and formatting constraints."
+        description="Verify generated output files against all required challenge integrity rules and formatting constraints."
         badgeText="Pipeline Stage 07"
         actions={
           <button
@@ -23,11 +29,13 @@ export const ValidationPage: React.FC = () => {
       />
 
       {/* Validation Status Banner */}
-      <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-6 flex items-start justify-between gap-3">
-        <div className="flex items-start gap-3">
-          <ShieldCheck className="w-5 h-5 text-slate-500 flex-shrink-0 mt-0.5" />
+      <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-2xs flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <div className="h-8 w-8 rounded bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500">
+            <ShieldCheck className="w-4 h-4 text-slate-500" />
+          </div>
           <div>
-            <h3 className="text-xs font-bold text-slate-800">
+            <h3 className="text-xs font-bold text-slate-900">
               Validation Engine State: Validation Not Run
             </h3>
             <p className="text-xs text-slate-600 mt-0.5">
@@ -35,24 +43,36 @@ export const ValidationPage: React.FC = () => {
             </p>
           </div>
         </div>
-        <span className="px-2.5 py-1 rounded bg-slate-200 text-slate-700 font-mono text-xs font-semibold">
-          0 / 10 Checked
+        <span className="px-2.5 py-1 rounded bg-slate-100 text-slate-700 font-mono text-xs font-semibold border border-slate-200">
+          0 / {VALIDATION_RULES.length} Checked
         </span>
       </div>
 
-      {/* Validation Rules Grid */}
-      <div className="space-y-3 mb-6">
-        {VALIDATION_RULES.map((rule) => (
-          <ValidationCheck key={rule.id} rule={rule} />
-        ))}
+      {/* 18. SUBMISSION READINESS PANEL */}
+      <SubmissionReadiness />
+
+      {/* 17. VALIDATION CHECKS GRID */}
+      <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-2xs">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
+          <h3 className="text-sm font-bold text-slate-900">Validation Checks</h3>
+          <span className="text-[11px] font-mono text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded border border-slate-200">
+            Status: Waiting for outputs
+          </span>
+        </div>
+
+        <div className="space-y-3">
+          {VALIDATION_RULES.map((rule) => (
+            <ValidationCheck key={rule.id} rule={rule} />
+          ))}
+        </div>
       </div>
 
       {/* PDF Constraint Note */}
-      <div className="bg-blue-50/70 border border-blue-200 rounded-lg p-4 text-xs text-blue-900 flex items-start gap-2.5">
-        <Info className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+      <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 text-xs text-slate-600 flex items-start gap-2.5">
+        <Info className="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5" />
         <div>
-          <span className="font-semibold">Validation Rigor Policy:</span>
-          <p className="mt-0.5 text-blue-800">
+          <span className="font-bold text-slate-800">Validation Policy:</span>
+          <p className="mt-0.5 text-slate-600 leading-relaxed">
             No check will be marked as PASS until actual output files are generated and evaluated by the submission validator.
           </p>
         </div>
