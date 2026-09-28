@@ -8,8 +8,8 @@ export const ValidationPage: React.FC = () => {
   return (
     <div>
       <PageHeader
-        title="Submission Validation"
-        description="Verify generated output files against all 10 PDF challenge integrity rules and formatting constraints."
+        title="Output Integrity Validation"
+        description="Verify generated output files against schema constraints, candidate subset rules, and formatting integrity."
         badgeText="Pipeline Stage 07"
         actions={
           <button
@@ -28,10 +28,10 @@ export const ValidationPage: React.FC = () => {
           <ShieldCheck className="w-5 h-5 text-slate-500 flex-shrink-0 mt-0.5" />
           <div>
             <h3 className="text-xs font-bold text-slate-800">
-              Validation Engine State: Validation Not Run
+              Validation Engine State: Integrity Suite Ready
             </h3>
             <p className="text-xs text-slate-600 mt-0.5">
-              The automated validator checks compliance with all challenge constraints before packaging the submission zip file.
+              The automated validator checks compliance with data integrity rules, row order alignment, and subset validity.
             </p>
           </div>
         </div>

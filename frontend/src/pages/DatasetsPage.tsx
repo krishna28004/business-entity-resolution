@@ -17,10 +17,10 @@ export const DatasetsPage: React.FC = () => {
       <div className="bg-blue-50/70 border border-blue-200 rounded-lg p-4 mb-6 flex items-start gap-3">
         <Info className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
         <div className="text-xs text-blue-900">
-          <p className="font-semibold">Tab-Separated Values (.tsv) Requirement</p>
+          <p className="font-semibold">Tab-Separated Values (.tsv / .csv) Specification</p>
           <p className="mt-0.5 text-blue-800">
-            All challenge datasets must be tab-separated files (<code className="font-mono font-bold text-blue-950">.tsv</code>).
-            Ground truth is provided strictly for training (<code className="font-mono text-blue-950">train_ground_truth.tsv</code>). The test dataset does not include ground truth.
+            Pipeline datasets are tab- or comma-separated files containing reference and target entity schemas.
+            Ground truth linkage labels are used for model training and offline validation.
           </p>
         </div>
       </div>

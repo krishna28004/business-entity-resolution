@@ -82,7 +82,7 @@ export const WorkflowDiagram: React.FC = () => {
       <div className="bg-slate-900 text-slate-200 rounded-md p-4 text-xs">
         <div className="flex items-center gap-2 text-white font-semibold mb-2">
           <ShieldCheck className="w-4 h-4 text-amber-400" />
-          <span>Strict Challenge Architectural Rule</span>
+          <span>Core Pipeline Architectural Rule</span>
         </div>
         <p className="text-slate-300 leading-relaxed">
           The pipeline evaluate matches strictly from the candidate set:

@@ -1,24 +1,76 @@
-# Logs
-logs
+# Byte-compiled / optimized / ambient files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+dist/
+wheels/
+*.egg-info/
+*.egg
+
+# Virtual environments
+.env
+.env.*
+!.env.example
+.venv
+env/
+venv/
+ENV/
+
+# Testing & Coverage
+.coverage
+.pytest_cache/
+
+# Datasets (Large raw and competition datasets)
+dataset/
+data/
+*.tsv
+*.parquet
+# Preserve synthetic examples
+!examples/*.csv
+
+# Trained models & large binary artifacts
+models/
+*.joblib
+*.pkl
+*.pickle
+*.bin
+*.model
+
+# Pipeline runtime outputs
+output/
+results/
+scratch/
+logs/
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Databases & persistent indexes
+*.db
+*.sqlite
+*.sqlite3
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# Node / Frontend dependencies
+node_modules/
+dist/
+.npm
+
+# IDEs & System files
+.vscode/
+.idea/
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+desktop.ini
+
+# Competition & internal archive artifacts
+submission.zip
+submission_prev_backup.zip
+*.zip
+Documentation_template.md
+build_submission_zip.py
+eda*.py
+eda*.tsv
+utils/
+code/

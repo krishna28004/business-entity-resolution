@@ -1,0 +1,21 @@
+entity_id,business_name,business_address,country
+REF-001,Apex Global Technologies Inc.,1042 West Industrial Parkway Suite 300 San Jose CA,US
+REF-002,Zenith Logistics Solutions LLC,742 Evergreen Terrace Springfield IL,US
+REF-003,Starlight Media Group Corp.,1500 Broadway Floor 22 New York NY,US
+REF-004,Cascade Mountain Outdoor Outfitters,88 Pine Needle Way Seattle WA,US
+REF-005,Pinnacle Financial Advisory Services,450 North Michigan Avenue Chicago IL,US
+REF-006,Vanguard Renewable Power Corp,1200 Energy Boulevard Houston TX,US
+REF-007,Horizon BioHealth Laboratories,310 Science Park Drive Cambridge MA,US
+REF-008,Kalyani Textile Industries Pvt. Ltd.,Plot 45 Sector 18 Industrial Area Gurgaon Haryana,India
+REF-009,Surya Pharmaceuticals Limited,12/B Commercial Chambers Ring Road Surat Gujarat,India
+REF-010,Nandlal Kisan Agri Products LLP,Shop 14 Grain Market APMC Yard Vashi Navi Mumbai Maharashtra,India
+REF-011,Ananya Crafts & Heritage Enterprises,48 Heritage Bazaar Near City Palace Jaipur Rajasthan,India
+REF-012,Bharat Heavy Electrical Spares Co.,B-204 Okhla Industrial Area Phase 1 New Delhi,India
+REF-013,Maitri Software Consultancy Services,Tech Park Tower 3 Whitefield Main Road Bangalore Karnataka,India
+REF-014,Devi Engineering Works,Plot 88 MIDC Industrial Estate Bhosari Pune Maharashtra,India
+REF-015,Boulangerie Artisanale Saint-Germain SARL,14 Rue de la Paix 75002 Paris,France
+REF-016,Societe Nouvelle de Mecanique Industrielle,28 Avenue Victor Hugo 69002 Lyon,France
+REF-017,Atelier du Bois & Menuiserie Moderne,5 Rue des Martyrs 33000 Bordeaux,France
+REF-018,Pharmacie Principale de Provence,42 Boulevard Michelet 13008 Marseille,France
+REF-019,Soleil Vert Energies Renouvelables SAS,10 Place de la Comedie 34000 Montpellier,France
+REF-020,Nonexistent Reference Company With Zero Matches,999 Ghost Avenue Nowhereville,US

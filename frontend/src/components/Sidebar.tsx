@@ -30,7 +30,7 @@ const navItems: NavItem[] = [
   { id: 'entity-matching', label: 'Entity Matching', icon: GitCompare },
   { id: 'results', label: 'Results', icon: FileCheck2 },
   { id: 'validation', label: 'Validation', icon: ShieldCheck },
-  { id: 'submission', label: 'Submission', icon: Package },
+  { id: 'submission', label: 'Packaging', icon: Package },
 ];
 
 export const Sidebar: React.FC<SidebarProps> = ({ activePage, onSelectPage }) => {

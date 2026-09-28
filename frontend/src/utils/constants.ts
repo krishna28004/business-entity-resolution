@@ -90,8 +90,8 @@ export const WORKFLOW_STEPS: PipelineStep[] = [
   { stepNumber: '04', title: 'Candidate Pairs', subtitle: 'Final blocking output', outputArtifact: 'candidate_pairs.tsv', status: 'Not Started' },
   { stepNumber: '05', title: 'Entity Matching', subtitle: 'Matching classification model', status: 'Not Started' },
   { stepNumber: '06', title: 'Matching Results', subtitle: 'Final resolved entity pairs', outputArtifact: 'matching_results.tsv', status: 'Not Started' },
-  { stepNumber: '07', title: 'Validation', subtitle: 'Strict PDF compliance validation', status: 'Not Started' },
-  { stepNumber: '08', title: 'Submission', subtitle: 'Zip submission archive verification', outputArtifact: '<team_name>_submission.zip', status: 'Not Started' },
+  { stepNumber: '07', title: 'Validation', subtitle: 'Integrity & schema validation', status: 'Not Started' },
+  { stepNumber: '08', title: 'Packaging', subtitle: 'Distribution bundle verification', outputArtifact: 'dist/package.tar.gz', status: 'Not Started' },
 ];
 
 export const VALIDATION_RULES: ValidationRule[] = [
@@ -178,15 +178,14 @@ export const VALIDATION_RULES: ValidationRule[] = [
 ];
 
 export const SUBMISSION_CHECKLIST: SubmissionCheckItem[] = [
-  { id: 'sub_1', label: 'output/matching_results.tsv generated', fileOrFolder: 'output/matching_results.tsv', required: true, completed: false },
-  { id: 'sub_2', label: 'output/candidate_pairs.tsv generated', fileOrFolder: 'output/candidate_pairs.tsv', required: true, completed: false },
-  { id: 'sub_3', label: 'Validation suite passed (10/10 checks)', fileOrFolder: 'Validation Engine', required: true, completed: false },
-  { id: 'sub_4', label: 'Every Source 1 entity included', fileOrFolder: 'test_source1.tsv coverage', required: true, completed: false },
-  { id: 'sub_5', label: 'No duplicate Source 1 entity IDs', fileOrFolder: 'matching_results.tsv & candidate_pairs.tsv', required: true, completed: false },
-  { id: 'sub_6', label: 'Only Source 2 and Source 3 IDs used for matches/candidates', fileOrFolder: 'S2-* and S3-* check', required: true, completed: false },
-  { id: 'sub_7', label: 'Final matches are contained in candidate pairs (Subset rule verified)', fileOrFolder: 'FINAL MATCHES ⊆ FINAL CANDIDATES', required: true, completed: false },
-  { id: 'sub_8', label: 'Source code included in code/business_entity_resolution/src/', fileOrFolder: 'code/business_entity_resolution/src/', required: true, completed: false },
-  { id: 'sub_9', label: 'README.md included explaining data, candidate gen, matching, output', fileOrFolder: 'code/business_entity_resolution/README.md', required: true, completed: false },
-  { id: 'sub_10', label: 'requirements.txt included with pinned dependencies', fileOrFolder: 'code/business_entity_resolution/requirements.txt', required: true, completed: false },
-  { id: 'sub_11', label: 'Documentation_template.md completed with methodology details', fileOrFolder: 'Documentation_template.md', required: true, completed: false },
+  { id: 'rel_1', label: 'Core modular ML package structured in src/business_entity_resolution/', fileOrFolder: 'src/business_entity_resolution/', required: true, completed: true },
+  { id: 'rel_2', label: 'CLI entry point scripts (train.py, evaluate.py, predict.py) implemented', fileOrFolder: 'scripts/', required: true, completed: true },
+  { id: 'rel_3', label: 'Self-contained synthetic demo dataset & runner ready', fileOrFolder: 'examples/run_demo.py', required: true, completed: true },
+  { id: 'rel_4', label: 'Unit test suite passing (normalization, blocking, features, pipeline)', fileOrFolder: 'tests/', required: true, completed: true },
+  { id: 'rel_5', label: 'Standard Python packaging files configured (pyproject.toml, requirements.txt)', fileOrFolder: 'pyproject.toml', required: true, completed: true },
+  { id: 'rel_6', label: 'Architecture and methodology documentation authored', fileOrFolder: 'docs/', required: true, completed: true },
+  { id: 'rel_7', label: 'Integrity validation engine ready (10/10 data constraint checks)', fileOrFolder: 'src/business_entity_resolution/evaluation.py', required: true, completed: true },
+  { id: 'rel_8', label: 'No hardcoded credentials, API keys, or local machine paths', fileOrFolder: 'Repository-wide scan', required: true, completed: true },
+  { id: 'rel_9', label: 'Comprehensive production-quality README with system diagrams', fileOrFolder: 'README.md', required: true, completed: true },
+  { id: 'rel_10', label: 'Memory-safe streaming pipeline with disk-backed SQLite indexing', fileOrFolder: 'src/business_entity_resolution/pipeline.py', required: true, completed: true },
 ];

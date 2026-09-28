@@ -7,12 +7,12 @@ export const Header: React.FC = () => {
       <div className="flex items-center gap-3 text-xs text-slate-600">
         <div className="flex items-center gap-1.5 px-2.5 py-1 bg-slate-100 rounded text-slate-700 font-mono text-[11px] border border-slate-200">
           <Folder className="w-3.5 h-3.5 text-slate-500" />
-          <span>d:\Business Entity Resolution Challenge</span>
+          <span>/workspace/business-entity-resolution</span>
         </div>
         <span className="text-slate-300">|</span>
         <div className="flex items-center gap-1.5 text-slate-500 text-[11px]">
           <FileCode2 className="w-3.5 h-3.5" />
-          <span>Target Outputs: TSV Format</span>
+          <span>Pipeline Engine: Multi-Pass + LightGBM</span>
         </div>
       </div>
 

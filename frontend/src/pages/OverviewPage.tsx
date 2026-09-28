@@ -25,18 +25,18 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onNavigate }) => {
     <div>
       <PageHeader
         title="Entity Resolution Workspace"
-        description="Resolve noisy business records across multiple sources using candidate generation, entity matching, and submission validation."
-        badgeText="Challenge Specification"
+        description="Resolve noisy business records across multiple sources using candidate generation, pairwise feature engineering, LightGBM classification, and precision post-filtering."
+        badgeText="Production Architecture"
       />
 
       {/* Initial System Alert Banner */}
       <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-6 flex items-start gap-3">
         <AlertTriangle className="w-5 h-5 text-slate-500 flex-shrink-0 mt-0.5" />
         <div className="text-xs text-slate-600">
-          <p className="font-semibold text-slate-800">Environment Ready — Awaiting Datasets</p>
+          <p className="font-semibold text-slate-800">Environment Ready</p>
           <p className="mt-0.5">
             The application structure, pipeline specification, and validation engine are initialized.
-            The ML model and dataset processing pipeline will execute when official TSV files are provided.
+            The ML model and dataset processing pipeline execute on structured entity tables.
           </p>
         </div>
       </div>
@@ -47,7 +47,7 @@ export const OverviewPage: React.FC<OverviewPageProps> = ({ onNavigate }) => {
       {/* 8 Step Workflow Grid */}
       <div className="my-6">
         <h3 className="text-sm font-semibold text-slate-900 mb-3">
-          Challenge Workflow Milestones (01 – 08)
+          Pipeline Architecture Milestones (01 – 08)
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
           {WORKFLOW_STEPS.map((step) => (
