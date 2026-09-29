@@ -2,8 +2,13 @@ import React from 'react';
 import { PageHeader } from '../components/PageHeader';
 import { SUBMISSION_CHECKLIST } from '../utils/constants';
 import { FolderTree, CheckSquare, CheckCircle, Package } from 'lucide-react';
+import type { PageId } from '../types';
 
-export const SubmissionPage: React.FC = () => {
+interface SubmissionPageProps {
+  onNavigate?: (page: PageId) => void;
+}
+
+export const SubmissionPage: React.FC<SubmissionPageProps> = () => {
   return (
     <div>
       <PageHeader

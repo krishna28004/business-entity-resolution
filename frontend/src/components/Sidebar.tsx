@@ -40,12 +40,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage, onSelectPage }) =>
         {/* Brand Header */}
         <div className="p-5 border-b border-slate-800">
           <div className="flex items-center gap-2.5">
-            <div className="h-8 w-8 rounded bg-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-sm">
-              EM
+            <div className="h-7 w-7 rounded bg-slate-800 border border-slate-700 flex items-center justify-center text-white font-mono text-xs font-bold">
+              ER
             </div>
             <div>
-              <h1 className="text-white font-semibold text-base leading-tight tracking-tight">EntityMatch</h1>
-              <p className="text-xs text-slate-400 font-normal">Business Entity Resolution</p>
+              <h1 className="text-white font-semibold text-sm leading-tight tracking-tight font-mono">
+                Entity Resolution
+              </h1>
+              <p className="text-[11px] text-slate-400 font-normal">Resolution Pipeline</p>
             </div>
           </div>
         </div>
@@ -59,13 +61,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage, onSelectPage }) =>
               <button
                 key={item.id}
                 onClick={() => onSelectPage(item.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-md text-xs font-medium transition-colors text-left ${
+                className={`w-full flex items-center gap-3 px-3 py-2 rounded-md text-xs font-medium transition-colors text-left cursor-pointer ${
                   isActive
-                    ? 'bg-blue-600 text-white shadow-xs'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+                    ? 'bg-slate-800 text-white font-semibold shadow-xs border-l-2 border-blue-500'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-500'}`} />
                 <span>{item.label}</span>
               </button>
             );
@@ -73,31 +75,31 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage, onSelectPage }) =>
         </nav>
       </div>
 
-      {/* Required Bottom Initial Status Panel */}
+      {/* System Environment State */}
       <div className="p-4 border-t border-slate-800 bg-slate-950/60">
-        <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2.5">
-          System Environment State
+        <div className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider mb-2.5">
+          Environment State
         </div>
-        <div className="space-y-2 text-xs">
+        <div className="space-y-2 text-xs font-mono">
           <div className="flex items-center justify-between">
             <span className="text-slate-400">Dataset</span>
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[11px] border border-slate-700">
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
-              Not Loaded
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] border border-slate-700">
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
+              Not loaded
             </span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-slate-400">Pipeline</span>
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[11px] border border-slate-700">
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
-              Not Run
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] border border-slate-700">
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
+              Not run
             </span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-slate-400">Model</span>
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[11px] border border-slate-700">
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
-              Not Connected
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] border border-slate-700">
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
+              Not connected
             </span>
           </div>
         </div>
@@ -105,3 +107,4 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage, onSelectPage }) =>
     </aside>
   );
 };
+

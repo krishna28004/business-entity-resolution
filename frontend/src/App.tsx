@@ -22,19 +22,19 @@ export function App() {
       case 'datasets':
         return <DatasetsPage />;
       case 'data-prep':
-        return <DataPrepPage />;
+        return <DataPrepPage onNavigate={setActivePage} />;
       case 'candidate-gen':
-        return <CandidateGenPage />;
+        return <CandidateGenPage onNavigate={setActivePage} />;
       case 'candidate-pairs':
-        return <CandidatePairsPage />;
+        return <CandidatePairsPage onNavigate={setActivePage} />;
       case 'entity-matching':
-        return <EntityMatchingPage />;
+        return <EntityMatchingPage onNavigate={setActivePage} />;
       case 'results':
-        return <ResultsPage />;
+        return <ResultsPage onNavigate={setActivePage} />;
       case 'validation':
-        return <ValidationPage />;
+        return <ValidationPage onNavigate={setActivePage} />;
       case 'submission':
-        return <SubmissionPage />;
+        return <SubmissionPage onNavigate={setActivePage} />;
       default:
         return <OverviewPage onNavigate={setActivePage} />;
     }

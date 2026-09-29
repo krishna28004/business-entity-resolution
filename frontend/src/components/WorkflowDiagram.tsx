@@ -1,97 +1,97 @@
 import React from 'react';
+import type { PageId } from '../types';
 import { FileText, ShieldCheck } from 'lucide-react';
 
-export const WorkflowDiagram: React.FC = () => {
+interface WorkflowDiagramProps {
+  onNavigate?: (page: PageId) => void;
+}
+
+interface StepInfo {
+  num: string;
+  title: string;
+  pageId: PageId;
+  output?: string;
+  status: 'Not started' | 'Locked / Waiting';
+}
+
+const steps: StepInfo[] = [
+  { num: '01', title: 'Dataset', pageId: 'datasets', status: 'Not started' },
+  { num: '02', title: 'Preparation', pageId: 'data-prep', status: 'Locked / Waiting' },
+  { num: '03', title: 'Candidate Generation', pageId: 'candidate-gen', status: 'Locked / Waiting' },
+  { num: '04', title: 'Candidate Set', pageId: 'candidate-pairs', output: 'candidate_pairs.tsv', status: 'Locked / Waiting' },
+  { num: '05', title: 'Matching', pageId: 'entity-matching', status: 'Locked / Waiting' },
+  { num: '06', title: 'Results', pageId: 'results', output: 'matching_results.tsv', status: 'Locked / Waiting' },
+  { num: '07', title: 'Validation', pageId: 'validation', status: 'Locked / Waiting' },
+  { num: '08', title: 'Packaging', pageId: 'submission', status: 'Locked / Waiting' },
+];
+
+export const WorkflowDiagram: React.FC<WorkflowDiagramProps> = ({ onNavigate }) => {
   return (
-    <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-xs my-6">
-      <div className="flex items-center justify-between mb-4">
+    <div className="bg-white border border-slate-200 rounded-lg p-5 my-6 shadow-2xs">
+      <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-200">
         <div>
-          <h3 className="text-base font-semibold text-slate-900">Pipeline Execution Architecture</h3>
+          <h3 className="text-xs font-bold text-slate-900 tracking-wider uppercase font-mono">
+            Pipeline Stages (01 – 08)
+          </h3>
           <p className="text-xs text-slate-500 mt-0.5">
-            Strict sequential resolution flow from raw TSV datasets to candidate pairs, matching model, and submission package.
+            Click any milestone stage to navigate to its detailed workspace.
           </p>
         </div>
-        <div className="px-3 py-1 bg-amber-50 border border-amber-200 rounded text-xs text-amber-800 font-mono font-medium flex items-center gap-1.5">
-          <span>Constraint Rule:</span>
-          <span className="font-bold">FINAL MATCHES ⊆ FINAL CANDIDATES</span>
+        <div className="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded text-[11px] text-slate-600 font-mono font-medium">
+          Pipeline State: Standby
         </div>
       </div>
 
-      {/* Main Flow Diagram */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-3 my-6">
-        {/* Step 1 */}
-        <div className="bg-slate-50 border border-slate-200 rounded p-3.5 relative">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="h-5 w-5 rounded bg-slate-200 text-slate-700 font-mono text-[10px] font-bold flex items-center justify-center">
-              01
-            </span>
-            <span className="text-xs font-semibold text-slate-800">Datasets</span>
-          </div>
-          <p className="text-[11px] text-slate-500 mb-2">Source 1, Source 2, Source 3 TSV files</p>
-          <div className="text-[10px] font-mono text-slate-600 bg-white p-1.5 rounded border border-slate-200">
-            S1-xxxxx, S2-xxxxx, S3-xxxxx
-          </div>
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+        {steps.map((step) => (
+          <button
+            key={step.num}
+            onClick={() => onNavigate?.(step.pageId)}
+            className="bg-slate-50 hover:bg-white border border-slate-200 hover:border-slate-300 rounded-lg p-3.5 flex flex-col justify-between text-left transition-all cursor-pointer group"
+          >
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <span className="h-5 w-5 rounded bg-slate-200 text-slate-700 font-mono text-[10px] font-bold flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                  {step.num}
+                </span>
+                <span
+                  className={`text-[10px] font-mono px-1.5 py-0.5 rounded border ${
+                    step.status === 'Not started'
+                      ? 'bg-blue-50 text-blue-800 border-blue-200 font-semibold'
+                      : 'bg-white text-slate-400 border-slate-200'
+                  }`}
+                >
+                  {step.status}
+                </span>
+              </div>
+              <h4 className="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
+                {step.title}
+              </h4>
+            </div>
 
-        {/* Step 2 */}
-        <div className="bg-slate-50 border border-slate-200 rounded p-3.5 relative">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="h-5 w-5 rounded bg-slate-200 text-slate-700 font-mono text-[10px] font-bold flex items-center justify-center">
-              02
-            </span>
-            <span className="text-xs font-semibold text-slate-800">Data Preparation</span>
-          </div>
-          <p className="text-[11px] text-slate-500 mb-2">Cleaning, address & country normalization</p>
-          <div className="text-[10px] font-mono text-slate-600 bg-white p-1.5 rounded border border-slate-200">
-            Normalized String Tokens
-          </div>
-        </div>
-
-        {/* Step 3 & Output 1 */}
-        <div className="bg-blue-50/70 border border-blue-200 rounded p-3.5 relative">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="h-5 w-5 rounded bg-blue-600 text-white font-mono text-[10px] font-bold flex items-center justify-center">
-              03
-            </span>
-            <span className="text-xs font-semibold text-blue-900">Candidate Gen</span>
-          </div>
-          <p className="text-[11px] text-blue-800 mb-2">Blocking & Similarity candidate set creation</p>
-          <div className="text-[11px] font-mono font-bold text-blue-900 bg-white p-1.5 rounded border border-blue-300 flex items-center justify-between">
-            <span>candidate_pairs.tsv</span>
-            <FileText className="w-3.5 h-3.5 text-blue-600" />
-          </div>
-        </div>
-
-        {/* Step 4 & Output 2 */}
-        <div className="bg-indigo-50/70 border border-indigo-200 rounded p-3.5 relative">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="h-5 w-5 rounded bg-indigo-600 text-white font-mono text-[10px] font-bold flex items-center justify-center">
-              04
-            </span>
-            <span className="text-xs font-semibold text-indigo-900">Entity Matching</span>
-          </div>
-          <p className="text-[11px] text-indigo-800 mb-2">Model evaluation on candidate pairs</p>
-          <div className="text-[11px] font-mono font-bold text-indigo-900 bg-white p-1.5 rounded border border-indigo-300 flex items-center justify-between">
-            <span>matching_results.tsv</span>
-            <FileText className="w-3.5 h-3.5 text-indigo-600" />
-          </div>
-        </div>
+            {step.output && (
+              <div className="mt-3 pt-2 border-t border-slate-200/80 font-mono text-[10px] text-blue-800 font-semibold flex items-center justify-between">
+                <span className="truncate">{step.output}</span>
+                <FileText className="w-3 h-3 text-blue-600 flex-shrink-0" />
+              </div>
+            )}
+          </button>
+        ))}
       </div>
 
-      {/* Explicit Candidate / Matching Relationship Box */}
-      <div className="bg-slate-900 text-slate-200 rounded-md p-4 text-xs">
+      <div className="bg-slate-900 text-slate-200 rounded-md p-4 text-xs mt-4">
         <div className="flex items-center gap-2 text-white font-semibold mb-2">
-          <ShieldCheck className="w-4 h-4 text-amber-400" />
+          <ShieldCheck className="w-4 h-4 text-blue-400" />
           <span>Core Pipeline Architectural Rule</span>
         </div>
         <p className="text-slate-300 leading-relaxed">
-          The pipeline evaluate matches strictly from the candidate set:
-          <span className="font-mono text-amber-300 bg-slate-800 px-2 py-0.5 rounded mx-1">
+          The pipeline evaluates matches strictly from the candidate set:
+          <span className="font-mono text-blue-300 bg-slate-800 px-2 py-0.5 rounded mx-1">
             Candidate Generation → candidate_pairs.tsv → Matching Model → matching_results.tsv
           </span>
         </p>
         <p className="text-slate-400 text-[11px] mt-1.5">
-          Matches CANNOT bypass candidate generation. Every matched entity ID in <code className="text-slate-200">matching_results.tsv</code> MUST be present in <code className="text-slate-200">candidate_pairs.tsv</code> for the corresponding Source 1 record.
+          Matches cannot bypass candidate generation. Every matched entity ID in <code className="text-slate-200">matching_results.tsv</code> must be present in <code className="text-slate-200">candidate_pairs.tsv</code> for the corresponding Source 1 record.
         </p>
       </div>
     </div>
